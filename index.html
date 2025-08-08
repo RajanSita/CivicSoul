@@ -9,6 +9,28 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- MOBILE WARNING OVERLAY - Add right after <body> tag in index.html -->
+
+<div class="mobile-warning-overlay" id="mobileWarning">
+    <div class="mobile-warning-content">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-title">Desktop Experience Required</div>
+        <div class="warning-message">
+            This website is optimized for desktop viewing and may not display properly on mobile devices.
+        </div>
+        <div class="warning-suggestion">
+            <div class="desktop-icon">🖥️</div>
+            <strong>For the best experience:</strong><br>
+            Please access this site from a desktop or laptop computer with a screen width of at least 1024px.
+        </div>
+        <button class="continue-anyway-btn" onclick="hideMobileWarning()">
+            Continue Anyway
+        </button>
+        <button class="continue-anyway-btn" onclick="window.history.back()">
+            Go Back
+        </button>
+    </div>
+</div>
     <!-- Floating Background Elements -->
     <div class="floating-elements">
         <div class="floating-element floating-element-1"></div>

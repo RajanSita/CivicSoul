@@ -1591,3 +1591,88 @@ document.addEventListener('DOMContentLoaded', function() {
 window.fixSocialLinks = makeSocialLinksClickable;
 
 console.log('✅ Social links fix loaded! Run fixSocialLinks() manually if needed.');
+
+
+
+
+// MOBILE WARNING FUNCTIONALITY - Add to bottom of app.js
+
+function hideMobileWarning() {
+    const warning = document.getElementById('mobileWarning');
+    if (warning) {
+        warning.style.animation = 'slideUp 0.3s ease-in reverse';
+        setTimeout(() => {
+            warning.style.display = 'none';
+        }, 300);
+        
+        // Store user preference for current session
+        sessionStorage.setItem('hideMobileWarning', 'true');
+        console.log('📱 Mobile warning dismissed by user');
+    }
+}
+
+function checkMobileWarning() {
+    const warning = document.getElementById('mobileWarning');
+    if (!warning) return;
+    
+    // Check if user already dismissed warning
+    if (sessionStorage.getItem('hideMobileWarning') === 'true') {
+        warning.style.display = 'none';
+        console.log('📱 Mobile warning already dismissed');
+        return;
+    }
+    
+    // Show warning on mobile/tablet screens
+    if (window.innerWidth <= 1024) {
+        warning.style.display = 'flex';
+        console.log('📱 Mobile warning shown (screen width: ' + window.innerWidth + 'px)');
+    } else {
+        warning.style.display = 'none';
+        console.log('🖥️ Desktop detected, warning hidden (screen width: ' + window.innerWidth + 'px)');
+    }
+}
+
+// Initialize mobile warning
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing mobile warning system...');
+    
+    // Check warning on page load
+    setTimeout(checkMobileWarning, 500);
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Only show again if not dismissed and on mobile screen
+            if (sessionStorage.getItem('hideMobileWarning') !== 'true') {
+                checkMobileWarning();
+            }
+        }, 250);
+    });
+    
+    // Handle orientation change (mobile rotation)
+    window.addEventListener('orientationchange', function() {
+        setTimeout(() => {
+            if (sessionStorage.getItem('hideMobileWarning') !== 'true') {
+                checkMobileWarning();
+            }
+        }, 500);
+    });
+});
+
+// Optional: Reset warning on page refresh (remove if you want it to stay dismissed)
+window.addEventListener('beforeunload', function() {
+    // Uncomment next line if you want warning to show again after page refresh
+    // sessionStorage.removeItem('hideMobileWarning');
+});
+
+// Manual function to show warning (for testing)
+window.showMobileWarning = function() {
+    sessionStorage.removeItem('hideMobileWarning');
+    checkMobileWarning();
+    console.log('🔧 Mobile warning manually triggered');
+};
+
+console.log('✅ Mobile warning system loaded!');
+
