@@ -258,7 +258,7 @@ class CivicSoulApp {
 
     // COMPLETELY FIXED: CTA Buttons - Now Properly Open Google Forms in New Tab
     initCTAButtons() {
-        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd7XIcUKFqNiLG83xGWfuiQFB5vkgcRUYXPotWnqJvlSEqdmg/viewform?usp=send_form';
+        const googleFormUrl = 'https://docs.google.com/forms/d/1LF7RoEGhsjXmQWDAtozltnkqHz6Ew-uNXRlyjcnTtFg/viewform?edit_requested=true';
         
         // Get all CTA buttons with the specific class
         const ctaButtons = document.querySelectorAll('.cta-button');
@@ -920,7 +920,7 @@ class CivicSoulApp {
                 const firstCTA = document.querySelector('.cta-button');
                 if (firstCTA) {
                     // Manually trigger navigation to Google Form
-                    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd7XIcUKFqNiLG83xGWfuiQFB5vkgcRUYXPotWnqJvlSEqdmg/viewform?usp=send_form';
+                    const googleFormUrl = 'https://docs.google.com/forms/d/1LF7RoEGhsjXmQWDAtozltnkqHz6Ew-uNXRlyjcnTtFg/viewform?edit_requested=true';
                     window.open(googleFormUrl, '_blank', 'noopener,noreferrer');
                     console.log('⌨️ Ctrl+Enter: CTA activated');
                 }
@@ -1224,7 +1224,7 @@ window.CivicSoul = {
     },
     
     openComplaintForm: function() {
-        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd7XIcUKFqNiLG83xGWfuiQFB5vkgcRUYXPotWnqJvlSEqdmg/viewform?usp=send_form';
+        const googleFormUrl = 'https://docs.google.com/forms/d/1LF7RoEGhsjXmQWDAtozltnkqHz6Ew-uNXRlyjcnTtFg/viewform?edit_requested=true';
         window.open(googleFormUrl, '_blank', 'noopener,noreferrer');
         console.log('🚀 Google Form opened via utility function');
     },
